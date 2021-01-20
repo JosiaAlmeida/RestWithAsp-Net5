@@ -4,4 +4,16 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Controllers\PersonControll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Controllers\PersonControll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
+
 </Project>

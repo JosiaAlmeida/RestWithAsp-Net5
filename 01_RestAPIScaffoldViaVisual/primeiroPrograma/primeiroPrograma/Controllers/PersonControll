@@ -9,40 +9,32 @@ namespace primeiroPrograma.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CalculatorController : ControllerBase
+    public class PersonControll : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly ILogger<CalculatorController> _logger;
+        private readonly ILogger<PersonControll> _logger;
 
-        public CalculatorController(ILogger<CalculatorController> logger)
+        public PersonControll(ILogger<PersonControll> logger)
         {
             _logger = logger;
         }
 
         //Parametros da rota
         [HttpGet("sum/{firstNumber}/{secondNumber}")]
-        public IActionResult Get(string firstNumber, string secondNumber)
+        public IActionResult sum(string firstNumber, string secondNumber)
         {
             if(IsNumeric(firstNumber) && IsNumeric(secondNumber))
             {
                 //Soma
                 var sum = ConvertInt(firstNumber) + ConvertInt(secondNumber);
-                //Subtração
-                //var sub = ConvertInt(firstNumber) - ConvertInt(secondNumber);
-                //Multiplicação
-                //var mult = ConvertInt(firstNumber) * ConvertInt(secondNumber);
-                //Div
-                //var div = ConvertInt(firstNumber) / ConvertInt(secondNumber);
-                //Media
-                //var med = (ConvertInt(firstNumber))/ 2;
                 return Ok(sum.ToString());
             }
             return BadRequest("Invalid Input");
-        }
+        
         private bool IsNumeric(string number)
         {
             double n;
