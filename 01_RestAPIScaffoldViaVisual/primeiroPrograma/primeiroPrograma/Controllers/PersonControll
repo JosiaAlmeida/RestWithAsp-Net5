@@ -17,44 +17,19 @@ namespace primeiroPrograma.Controllers
         };
 
         private readonly ILogger<PersonControll> _logger;
+        private IPersonService _personService;
 
-        public PersonControll(ILogger<PersonControll> logger)
+        public PersonControll(ILogger<PersonControll> logger, IPersonService personService)
         {
             _logger = logger;
+            _personService=     personService
         }
 
         //Parametros da rota
         [HttpGet("sum/{firstNumber}/{secondNumber}")]
-        public IActionResult sum(string firstNumber, string secondNumber)
+        public IActionResult Get(string firstNumber, string secondNumber)
         {
-            if(IsNumeric(firstNumber) && IsNumeric(secondNumber))
-            {
-                //Soma
-                var sum = ConvertInt(firstNumber) + ConvertInt(secondNumber);
-                return Ok(sum.ToString());
-            }
             return BadRequest("Invalid Input");
-        
-        private bool IsNumeric(string number)
-        {
-            double n;
-            //Convertendo e parseando em numerico
-            bool isNumber =double.TryParse(number, 
-                System.Globalization.NumberStyles.Any, 
-                System.Globalization.NumberFormatInfo.InvariantInfo, 
-                out n);
-            return isNumber;
-         //   return number = false;
-        }
-        private decimal ConvertInt(string Valor)
-        {
-            //var convert = Convert.ToInt32(Valor);
-            decimal decimalValue;
-            if(decimal.TryParse(Valor, out decimalValue))
-            {
-                return decimalValue;
-            }
-            return 0;
         }
     }
 }

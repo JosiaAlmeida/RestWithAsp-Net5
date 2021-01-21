@@ -6,6 +6,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+//Blioteca acrescentada
+using primeiroPrograma.Services;
+using primeiroPrograma.Services.Implementations;
+//Fim
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +31,8 @@ namespace primeiroPrograma
         {
 
             services.AddControllers();
+            //Injeção de Dependencias
+            services.AddScoped<IPersonServices, PersonServiceImplementations>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
