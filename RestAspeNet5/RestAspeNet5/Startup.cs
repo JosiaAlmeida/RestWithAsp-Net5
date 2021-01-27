@@ -30,10 +30,9 @@ namespace RestAspeNet5
         {
 
             services.AddControllers();
-            /*services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "RestAspeNet5", Version = "v1" });
-            });*/
+            //Injetando Mysql Conexão
+            var connection= Configuration["MySQLConnection:MySQLConnectionString"]
+            //Injetando Services
             services.AddScoped<IPersonService, PersonImplementationService>();
         }
 
