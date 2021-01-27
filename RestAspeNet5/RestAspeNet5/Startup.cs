@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using RestAspeNet5.Modals.Context;
 using RestAspeNet5.Service;
 using RestAspeNet5.Service.Implementacao;
 
@@ -32,6 +34,7 @@ namespace RestAspeNet5
             services.AddControllers();
             //Injetando Mysql Conexão
             var connection = Configuration["MySQLConnection:MySQLConnectionString"];
+            services.AddDbContext<MySQLContext>(options => options.UseMySql(connection));
             //Injetando Services
             services.AddScoped<IPersonService, PersonImplementationService>();
         }

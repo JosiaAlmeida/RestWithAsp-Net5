@@ -63,7 +63,7 @@ namespace RestAspeNet5.Service.Implementacao
             return person;
         }
 
-        private bool Exist(object id)
+        private bool Exist(long id)
         {
             return _context.Persons.Any(pers => pers.ID.Equals(id));
         }
