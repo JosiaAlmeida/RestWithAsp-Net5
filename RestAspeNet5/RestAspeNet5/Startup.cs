@@ -35,6 +35,7 @@ namespace RestAspeNet5
             //Injetando Mysql Conexão
             var connection = Configuration["MySQLConnection:MySQLConnectionString"];
             services.AddDbContext<MySQLContext>(options => options.UseMySql(connection));
+            services.AddApiVersioning();
             //Injetando Services
             services.AddScoped<IPersonService, PersonImplementationService>();
         }

@@ -9,8 +9,9 @@ using RestAspeNet5.Service;
 
 namespace RestAspeNet5.Controllers
 {
+    [ApiVersion("1")]
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/v{version:apiVersioning}")]
     public class PersonControll : ControllerBase
     {
         private static readonly string[] Summaries = new[]
