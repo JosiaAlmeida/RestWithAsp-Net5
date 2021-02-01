@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using RestAspeNet5.Business;
+using RestAspeNet5.Business.Implementacao;
 using RestAspeNet5.Modals.Context;
 using RestAspeNet5.Service;
 using RestAspeNet5.Service.Implementacao;
@@ -38,6 +40,8 @@ namespace RestAspeNet5
             services.AddApiVersioning();
             //Injetando Services
             services.AddScoped<IPersonService, PersonImplementationService>();
+            //Injetando nossa classe de negocio
+            services.AddScoped<IPersonBusiness, PersonImplementationBusiness>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

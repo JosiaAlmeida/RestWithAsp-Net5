@@ -10,13 +10,22 @@ namespace RestAspeNet5.Service.Implementacao
 {
     public class PersonImplementationService : IPersonService
     {
-
-        private volatile int count;
         private MySQLContext _context;
         public PersonImplementationService(MySQLContext context)
         {
             _context = context;
         }
+        public List<Person> FindAll()
+        {
+            //Retorna a lista
+            return _context.Persons.ToList();
+        }
+
+        public Person FindByID(long id)
+        {
+            return _context.Persons.SingleOrDefault(pers => pers.ID.Equals(id));
+        }
+
         public Person Create(Person person)
         {
             try
@@ -30,19 +39,6 @@ namespace RestAspeNet5.Service.Implementacao
             }
             return person;
         }
-
-
-        public List<Person> FindAll()
-        {
-            //Retorna a lista
-            return _context.Persons.ToList();
-        }
-
-        public Person FindByID(long id)
-        {
-            return _context.Persons.SingleOrDefault(pers => pers.ID.Equals(id));
-        }
-
         public Person Update(Person person)
         {
             if (!Exist(person.ID)) return new Person();
@@ -62,16 +58,6 @@ namespace RestAspeNet5.Service.Implementacao
             }
             return person;
         }
-
-        private bool Exist(long id)
-        {
-            return _context.Persons.Any(pers => pers.ID.Equals(id));
-        }
-        private long IncrementAndGet()
-        {
-            return Interlocked.Increment(ref count);
-        }
-
         public void Delete(long id)
         {
             var result = _context.Persons.SingleOrDefault(pers => pers.ID.Equals(id));
@@ -87,6 +73,14 @@ namespace RestAspeNet5.Service.Implementacao
                     throw;
                 }
             }
+        }
+        private bool Exist(long id)
+        {
+            return _context.Persons.Any(pers => pers.ID.Equals(id));
+        }
+        private long IncrementAndGet()
+        {
+            return Interlocked.Increment(ref count);
         }
     }
 }
