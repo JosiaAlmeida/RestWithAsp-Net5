@@ -41,7 +41,7 @@ namespace RestAspeNet5.Service.Implementacao
         }
         public Person Update(Person person)
         {
-            if (!Exist(person.ID)) return new Person();
+            if (!Exist(person.ID)) return null;
             var result= _context.Persons.SingleOrDefault(pers => pers.ID.Equals(person.ID));
             if (result != null)
             {

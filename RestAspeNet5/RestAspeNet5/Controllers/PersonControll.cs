@@ -11,7 +11,7 @@ namespace RestAspeNet5.Controllers
 {
     [ApiVersion("1")]
     [ApiController]
-    [Route("api/[controller]/v{version:apiVersioning}")]
+    [Route("api/[controller]/v{version:apiVersion}")]
     public class PersonControll : ControllerBase
     {
         private static readonly string[] Summaries = new[]
