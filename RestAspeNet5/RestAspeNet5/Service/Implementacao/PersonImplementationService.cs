@@ -78,9 +78,6 @@ namespace RestAspeNet5.Service.Implementacao
         {
             return _context.Persons.Any(pers => pers.ID.Equals(id));
         }
-        private long IncrementAndGet()
-        {
-            return Interlocked.Increment(ref count);
-        }
+       
     }
 }

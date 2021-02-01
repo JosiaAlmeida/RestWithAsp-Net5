@@ -65,3 +65,6 @@ C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAsp
 C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\obj\Debug\net5.0\ref\RestAspeNet5.dll
 C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\obj\Debug\net5.0\RestAspeNet5.pdb
 C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\obj\Debug\net5.0\RestAspeNet5.genruntimeconfig.cache
+C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Versioning.dll
+C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
