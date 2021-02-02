@@ -42,7 +42,6 @@ namespace RestAspeNet5
             //Injetando Mysql Conexão
             var connection = Configuration["MySQLConnection:MySQLConnectionString"];
             services.AddDbContext<MySQLContext>(options => options.UseMySql(connection));
-
             //Configurando Migração
             if (Environment.IsDevelopment())
             {
@@ -52,8 +51,10 @@ namespace RestAspeNet5
             services.AddApiVersioning();
             //Injetando Services
             services.AddScoped<IPersonService, PersonImplementationService>();
+            services.AddScoped<IBooksService, BooksImplementationService>();
             //Injetando nossa classe de negocio
             services.AddScoped<IPersonBusiness, PersonImplementationBusiness>();
+            //services.AddScoped<IPersonBusinessBooks, PersonImplementationBusinessBooks>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

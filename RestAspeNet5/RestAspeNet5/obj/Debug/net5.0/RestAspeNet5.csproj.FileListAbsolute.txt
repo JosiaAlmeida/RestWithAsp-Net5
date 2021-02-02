@@ -68,3 +68,13 @@ C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAsp
 C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Versioning.dll
 C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\bin\Debug\net5.0\Evolve.dll
+C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\bin\Debug\net5.0\Serilog.dll
+C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\bin\Debug\net5.0\Serilog.AspNetCore.dll
+C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\bin\Debug\net5.0\Serilog.Extensions.Hosting.dll
+C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\bin\Debug\net5.0\Serilog.Extensions.Logging.dll
+C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\bin\Debug\net5.0\Serilog.Formatting.Compact.dll
+C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\bin\Debug\net5.0\Serilog.Settings.Configuration.dll
+C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\bin\Debug\net5.0\Serilog.Sinks.Console.dll
+C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\bin\Debug\net5.0\Serilog.Sinks.Debug.dll
+C:\Users\JJA\Documents\CursosP.Web\Asp\RestWithAsp-Net5Udmy\RestAspeNet5\RestAspeNet5\bin\Debug\net5.0\Serilog.Sinks.File.dll

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestAspeNet5.Modals
 {
-    [Table("person2")]
+    [Table("person")]
     public class Person
     {
         [Column("id")]
