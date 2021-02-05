@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JJA\\Documents\\CursosP.Web\\Asp\\RestApi\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj": {}
+    "C:\\Users\\JJA\\Documents\\CursosP.Web\\Asp\\RestWithAsp-Net5Udmy\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JJA\\Documents\\CursosP.Web\\Asp\\RestApi\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj": {
+    "C:\\Users\\JJA\\Documents\\CursosP.Web\\Asp\\RestWithAsp-Net5Udmy\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JJA\\Documents\\CursosP.Web\\Asp\\RestApi\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj",
+        "projectUniqueName": "C:\\Users\\JJA\\Documents\\CursosP.Web\\Asp\\RestWithAsp-Net5Udmy\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj",
         "projectName": "RestAspeNet5",
-        "projectPath": "C:\\Users\\JJA\\Documents\\CursosP.Web\\Asp\\RestApi\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj",
+        "projectPath": "C:\\Users\\JJA\\Documents\\CursosP.Web\\Asp\\RestWithAsp-Net5Udmy\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj",
         "packagesPath": "C:\\Users\\JJA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JJA\\Documents\\CursosP.Web\\Asp\\RestApi\\RestAspeNet5\\RestAspeNet5\\obj\\",
+        "outputPath": "C:\\Users\\JJA\\Documents\\CursosP.Web\\Asp\\RestWithAsp-Net5Udmy\\RestAspeNet5\\RestAspeNet5\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -43,6 +43,34 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Evolve": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Versioning": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[3.2.4, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.10.0, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[3.4.0, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"

@@ -6,35 +6,55 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using RestAspeNet5.Business;
+using RestAspeNet5.Business.Implementacao;
+using RestAspeNet5.Modals.Context;
 using RestAspeNet5.Service;
 using RestAspeNet5.Service.Implementacao;
+using Serilog;
 
 namespace RestAspeNet5
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public IConfiguration Configuration { get; }
+        //Configurando Environment
+        public IWebHostEnvironment Environment { get; }
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
+            Environment = environment;
+            //Configurando Login de serilog
+            Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
             services.AddControllers();
-            /*services.AddSwaggerGen(c =>
+            //Injetando Mysql Conexão
+            var connection = Configuration["MySQLConnection:MySQLConnectionString"];
+            services.AddDbContext<MySQLContext>(options => options.UseMySql(connection));
+            //Configurando Migração
+            if (Environment.IsDevelopment())
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "RestAspeNet5", Version = "v1" });
-            });*/
+                MigrateDatabase(connection);
+            }
+
+            services.AddApiVersioning();
+            //Injetando Services
             services.AddScoped<IPersonService, PersonImplementationService>();
+            services.AddScoped<IBooksService, BooksImplementationService>();
+            //Injetando nossa classe de negocio
+            services.AddScoped<IPersonBusiness, PersonImplementationBusiness>();
+            //services.AddScoped<IPersonBusinessBooks, PersonImplementationBusinessBooks>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +77,27 @@ namespace RestAspeNet5
             {
                 endpoints.MapControllers();
             });
+        }
+        private void MigrateDatabase(string connection)
+        {
+            try
+            {
+                //Base de dados conexão
+                var evolveConnection = new MySql.Data.MySqlClient.MySqlConnection(connection);
+                //Inicializando o Evolve
+                var evolve = new Evolve.Evolve(evolveConnection, msg => Log.Information(msg))
+                {
+                    //Rota para as migrations
+                    Locations = new List<string> { "db/migrations", "db/dataset" },
+                    IsEraseDisabled = true,
+                };
+                evolve.Migrate();
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Erro na migração da base de dados", ex);
+                throw;
+            }
         }
     }
 }

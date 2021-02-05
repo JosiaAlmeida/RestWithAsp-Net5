@@ -9,8 +9,9 @@ using RestAspeNet5.Service;
 
 namespace RestAspeNet5.Controllers
 {
+    [ApiVersion("1")]
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/v{version:apiVersion}")]
     public class PersonControll : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -20,6 +21,7 @@ namespace RestAspeNet5.Controllers
 
         private readonly ILogger<PersonControll> _logger;
         private IPersonService _personService;
+        private IBooksService _personServiceBooks;
 
         public PersonControll(ILogger<PersonControll> logger, IPersonService personService)
         {
