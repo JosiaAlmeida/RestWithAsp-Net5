@@ -1,17 +1,14 @@
-﻿using RestAspeNet5.Modals;
-using System;
+﻿using RestAspeNet5.Data.VO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RestAspeNet5.Business
 {
-    interface IPersonBusiness
+    public interface IPersonBusiness
     {
-        Person Create(Person person);
-        List<Person> FindAll();
-        Person FindByID(long ID);
-        Person Update(Person person);
+        IPersonVO Create(IPersonVO person);
+        List<IPersonVO> FindAll();
+        IPersonVO FindByID(long ID);
+        IPersonVO Update(IPersonVO person);
         //Person Delete(Person person);
         void Delete(long id);
     }

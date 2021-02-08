@@ -1,22 +1,15 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 using RestAspeNet5.Business;
 using RestAspeNet5.Business.Implementacao;
 using RestAspeNet5.Modals.Context;
-using RestAspeNet5.Service;
-using RestAspeNet5.Service.Implementacao;
+using RestAspeNet5.Repository.Generic;
 using Serilog;
 
 namespace RestAspeNet5
@@ -47,14 +40,14 @@ namespace RestAspeNet5
             {
                 MigrateDatabase(connection);
             }
-
+            //Injeção de dependencias
+            
             services.AddApiVersioning();
             //Injetando Services
-            services.AddScoped<IPersonService, PersonImplementationService>();
-            services.AddScoped<IBooksService, BooksImplementationService>();
             //Injetando nossa classe de negocio
             services.AddScoped<IPersonBusiness, PersonImplementationBusiness>();
-            //services.AddScoped<IPersonBusinessBooks, PersonImplementationBusinessBooks>();
+            services.AddScoped<IBooksBusiness, BookImplementationBusiness>();
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

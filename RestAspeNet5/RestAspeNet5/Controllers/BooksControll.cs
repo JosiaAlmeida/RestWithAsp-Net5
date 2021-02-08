@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using RestAspeNet5.Business;
+using RestAspeNet5.Data.VO;
 using RestAspeNet5.Modals;
-using RestAspeNet5.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using RestAspeNet5.Repository.Generic;
 
 namespace RestAspeNet5.Controllers
 {
@@ -20,44 +18,44 @@ namespace RestAspeNet5.Controllers
         };
 
         private readonly ILogger<BooksControll> _logger;
-        private IBooksService _books;
+        private IBooksBusiness _booksBusiness;
 
-        public BooksControll(ILogger<BooksControll> logger, IBooksService books)
+        public BooksControll(ILogger<BooksControll> logger, IBooksBusiness books)
         {
             _logger = logger;
-            _books = books;
+            _booksBusiness = books;
         }
 
         [HttpGet]
         public IActionResult get()
         {
-            return Ok(_books.FindAll());
+            return Ok(_booksBusiness.FindAll());
         }
         [HttpGet("{id}")]
         public IActionResult Get(long id)
         {
-            var book = _books.FindByID(id);
+            var book = _booksBusiness.FindByID(id);
             if (book == null) return NotFound();
             return Ok(book);
         }
         [HttpPost]
-        public IActionResult Post([FromBody] Books books)
+        public IActionResult Post([FromBody] BookVO books)
         {
             if (books == null) return BadRequest();
-            return Ok(_books.Create(books));
+            return Ok(_booksBusiness.Create(books));
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] Books books)
+        public IActionResult Put([FromBody] BookVO books)
         {
             if (books == null) return BadRequest();
-            return Ok(_books.Update(books));
+            return Ok(_booksBusiness.Update(books));
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
-            _books.Delete(id);
+            _booksBusiness.Delete(id);
             return NoContent();
         }
     }

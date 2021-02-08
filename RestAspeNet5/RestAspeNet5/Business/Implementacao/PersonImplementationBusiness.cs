@@ -1,40 +1,45 @@
-﻿using RestAspeNet5.Modals;
-using RestAspeNet5.Service;
-using System;
+﻿using RestAspeNet5.Data.Convert.Implementetion;
+using RestAspeNet5.Data.VO;
+using RestAspeNet5.Modals;
+using RestAspeNet5.Repository.Generic;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RestAspeNet5.Business.Implementacao
 {
     public class PersonImplementationBusiness : IPersonBusiness
     {
-        private readonly IPersonService _person;
-        public PersonImplementationBusiness(IPersonService person)
+        private readonly IRepository<Person> _repository;
+        private readonly IPersonConverter _converter;
+        public PersonImplementationBusiness(IRepository<Person> repository)
         {
-            _person = person;
+            _repository = repository;
+            _converter = new IPersonConverter();
         }
-        public List<Person> FindAll()
+        public List<IPersonVO> FindAll()
         {
-            return _person.FindAll();
-        }
-
-        public Person FindByID(long ID)
-        {
-            return _person.FindByID(ID);
+            return _converter.Parse(_repository.FindAll());
         }
 
-        public Person Create(Person person)
+        public IPersonVO FindByID(long ID)
         {
-            return _person.Create(person);
+            return _converter.Parse(_repository.FindByID(ID));
         }
-        public Person Update(Person person)
+
+        public IPersonVO Create(IPersonVO person)
         {
-            return _person.Update(person);
+            var personEntity = _converter.Parse(person);
+            personEntity = _repository.Create(personEntity);
+            return _converter.Parse(personEntity);
+        }
+        public IPersonVO Update(IPersonVO person)
+        {
+            var personEntity = _converter.Parse(person);
+            personEntity= _repository.Update(personEntity);
+            return _converter.Parse(personEntity);
         }
         public void Delete(long id)
         {
-            _person.Delete(id);
+            _repository.Delete(id);
         }
     }
 }

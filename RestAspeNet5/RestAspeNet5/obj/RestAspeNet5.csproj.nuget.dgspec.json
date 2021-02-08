@@ -1,24 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JJA\\Documents\\CursosP.Web\\Asp\\RestWithAsp-Net5Udmy\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj": {}
+    "C:\\Users\\Almeida Uchiha\\Documents\\Projetos\\RestWithAsp-Net5Udmy\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JJA\\Documents\\CursosP.Web\\Asp\\RestWithAsp-Net5Udmy\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj": {
+    "C:\\Users\\Almeida Uchiha\\Documents\\Projetos\\RestWithAsp-Net5Udmy\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JJA\\Documents\\CursosP.Web\\Asp\\RestWithAsp-Net5Udmy\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj",
+        "projectUniqueName": "C:\\Users\\Almeida Uchiha\\Documents\\Projetos\\RestWithAsp-Net5Udmy\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj",
         "projectName": "RestAspeNet5",
-        "projectPath": "C:\\Users\\JJA\\Documents\\CursosP.Web\\Asp\\RestWithAsp-Net5Udmy\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj",
-        "packagesPath": "C:\\Users\\JJA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JJA\\Documents\\CursosP.Web\\Asp\\RestWithAsp-Net5Udmy\\RestAspeNet5\\RestAspeNet5\\obj\\",
+        "projectPath": "C:\\Users\\Almeida Uchiha\\Documents\\Projetos\\RestWithAsp-Net5Udmy\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj",
+        "packagesPath": "C:\\Users\\Almeida Uchiha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Almeida Uchiha\\Documents\\Projetos\\RestWithAsp-Net5Udmy\\RestAspeNet5\\RestAspeNet5\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\JJA\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Almeida Uchiha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
