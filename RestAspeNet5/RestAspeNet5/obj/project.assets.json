@@ -187,6 +187,18 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Core.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Mvc.Formatters.Xml/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Core": "2.2.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Formatters.Xml.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Formatters.Xml.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Mvc.Versioning/4.2.0": {
         "type": "package",
         "compile": {
@@ -1491,6 +1503,19 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Core.xml",
         "microsoft.aspnetcore.mvc.core.2.2.5.nupkg.sha512",
         "microsoft.aspnetcore.mvc.core.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Mvc.Formatters.Xml/2.2.0": {
+      "sha512": "4pUhKtqhaNqSeMRRyEw1kGjg/pNLczzd4VAsanMGI539sCdkl1JBaoFojZb1helVdUvX9a1Jo+lYXq0lnwB/GQ==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.mvc.formatters.xml/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Formatters.Xml.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Formatters.Xml.xml",
+        "microsoft.aspnetcore.mvc.formatters.xml.2.2.0.nupkg.sha512",
+        "microsoft.aspnetcore.mvc.formatters.xml.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Mvc.Versioning/4.2.0": {
@@ -4429,6 +4454,7 @@
     "net5.0": [
       "Evolve >= 2.4.0",
       "Microsoft.AspNetCore.Mvc.Core >= 2.2.5",
+      "Microsoft.AspNetCore.Mvc.Formatters.Xml >= 2.2.0",
       "Microsoft.AspNetCore.Mvc.Versioning >= 4.2.0",
       "Pomelo.EntityFrameworkCore.MySql >= 3.2.4",
       "Serilog >= 2.10.0",
@@ -4488,6 +4514,10 @@
           "Microsoft.AspNetCore.Mvc.Core": {
             "target": "Package",
             "version": "[2.2.5, )"
+          },
+          "Microsoft.AspNetCore.Mvc.Formatters.Xml": {
+            "target": "Package",
+            "version": "[2.2.0, )"
           },
           "Microsoft.AspNetCore.Mvc.Versioning": {
             "target": "Package",

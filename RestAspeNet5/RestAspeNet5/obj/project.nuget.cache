@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/QJdyuzG/0O6owrbFJyDOKxphyB7lNGlqKRUZGkWSgvg+8DJ2km/79Oq0wNpz7CyzpB+3qU3qSNggdHAyMZwaA==",
+  "dgSpecHash": "5UOrfpz3t+VMJMSFoJT1IktTvj39vXyxhz0iUPMVAkYaTzNyQNFsvWvdiHqKGNtXpW0eucRU8xM7sH1PQ90Ktg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Almeida Uchiha\\Documents\\Projetos\\RestWithAsp-Net5Udmy\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj",
   "expectedPackageFiles": [
@@ -17,6 +17,7 @@
     "C:\\Users\\Almeida Uchiha\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\Almeida Uchiha\\.nuget\\packages\\microsoft.aspnetcore.mvc.abstractions\\2.2.0\\microsoft.aspnetcore.mvc.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Almeida Uchiha\\.nuget\\packages\\microsoft.aspnetcore.mvc.core\\2.2.5\\microsoft.aspnetcore.mvc.core.2.2.5.nupkg.sha512",
+    "C:\\Users\\Almeida Uchiha\\.nuget\\packages\\microsoft.aspnetcore.mvc.formatters.xml\\2.2.0\\microsoft.aspnetcore.mvc.formatters.xml.2.2.0.nupkg.sha512",
     "C:\\Users\\Almeida Uchiha\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\4.2.0\\microsoft.aspnetcore.mvc.versioning.4.2.0.nupkg.sha512",
     "C:\\Users\\Almeida Uchiha\\.nuget\\packages\\microsoft.aspnetcore.responsecaching.abstractions\\2.2.0\\microsoft.aspnetcore.responsecaching.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Almeida Uchiha\\.nuget\\packages\\microsoft.aspnetcore.routing\\2.2.0\\microsoft.aspnetcore.routing.2.2.0.nupkg.sha512",

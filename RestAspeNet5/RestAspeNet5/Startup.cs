@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Net.Http.Headers;
 using RestAspeNet5.Business;
 using RestAspeNet5.Business.Implementacao;
 using RestAspeNet5.Modals.Context;
@@ -40,6 +41,15 @@ namespace RestAspeNet5
             {
                 MigrateDatabase(connection);
             }
+
+            //Formatando para formato Xml
+            services.AddMvc(opt =>
+            {
+                opt.RespectBrowserAcceptHeader = true;
+
+                opt.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("application/xml"));
+                opt.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
+            }).AddXmlSerializerFormatters();
             //Injeção de dependencias
             
             services.AddApiVersioning();
