@@ -28,34 +28,17 @@ namespace RestAspeNet5.Repository.Generic
         public T Create(T item)
         {
             //Trocando id de ids iguais
-            if (item.ID == item.ID){
-                dataset.SingleOrDefault(pers => pers.ID.Equals(item.ID + 1));
-                try
-                {
-                    dataset.Add(item);
-                    _context.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-                return item;
-            }
-            else
+            try
             {
-                try
-                {
-                    dataset.Add(item);
-                    _context.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-                return item;
+                dataset.Add(item);
+                _context.SaveChanges();
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return item;
             
         }
         public T Update(T item)
@@ -84,18 +67,6 @@ namespace RestAspeNet5.Repository.Generic
         {
             var result = dataset.SingleOrDefault(pers => pers.ID.Equals(id));
             if (result != null)
-            {
-                try
-                {
-                    dataset.Remove(result);
-                    _context.SaveChanges();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
-            if (result == result)
             {
                 try
                 {
