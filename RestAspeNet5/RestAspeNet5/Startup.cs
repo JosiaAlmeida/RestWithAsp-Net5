@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Net.Http.Headers;
+using Microsoft.OpenApi.Models;
 using RestAspeNet5.Business;
 using RestAspeNet5.Business.Implementacao;
 using RestAspeNet5.Hypermedia.Enricher;
@@ -53,11 +55,25 @@ namespace RestAspeNet5
                 opt.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
             }).AddXmlSerializerFormatters();
 
+            //Adicionando Hateos
             var filteroptions = new HyperMidiaFilterOptions();
             filteroptions.ContentResponsiveEnricherList.Add(new PersonEnricher());
             filteroptions.ContentResponsiveEnricherList.Add(new BookEnricher());
 
             services.AddSingleton(filteroptions);
+            //Swagger
+            services.AddSwaggerGen(Sw=> {
+                Sw.SwaggerDoc("v1", new OpenApiInfo {
+                    Title="Rest Api from 0 To Azure",
+                    Version="v1",
+                    Description="Learning .NET in developer course",
+                    Contact = new OpenApiContact
+                    {
+                        Name="Josia Almeida",
+                        Url= new Uri("http://github.com/JosiaAlmeida")
+                    }
+                });
+            });
             //Injeção de dependencias
             
             services.AddApiVersioning();
@@ -82,11 +98,23 @@ namespace RestAspeNet5
 
             app.UseRouting();
 
+            app.UseSwagger();
+            //Gera uma pagina Html
+            app.UseSwaggerUI(Sw=> {
+                Sw.SwaggerEndpoint("/swagger/v1/swagger.json", "Rest Api from 0 To Azure - v1");
+                }
+            );
+
+            var opt = new RewriteOptions();
+            opt.AddRedirect("^$", "swagger");
+            app.UseRewriter(opt);
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                //Hateos
                 endpoints.MapControllerRoute("Defaultapi", ("{controller=value}/{id?}"));
             });
         }
