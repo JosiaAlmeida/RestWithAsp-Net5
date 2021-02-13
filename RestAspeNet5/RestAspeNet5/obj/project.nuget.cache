@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5UOrfpz3t+VMJMSFoJT1IktTvj39vXyxhz0iUPMVAkYaTzNyQNFsvWvdiHqKGNtXpW0eucRU8xM7sH1PQ90Ktg==",
+  "dgSpecHash": "G2coIPVltU8bybtT2nlqBVm7vqQlR7PUYQO4NPpwqvY4Vsu2Icd1K13XxCBtWqMUIJHhUZnvLWR4wAJoZLMrUg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Almeida Uchiha\\Documents\\Projetos\\RestWithAsp-Net5Udmy\\RestAspeNet5\\RestAspeNet5\\RestAspeNet5.csproj",
   "expectedPackageFiles": [
@@ -67,7 +67,7 @@
     "C:\\Users\\Almeida Uchiha\\.nuget\\packages\\serilog.sinks.debug\\1.0.1\\serilog.sinks.debug.1.0.1.nupkg.sha512",
     "C:\\Users\\Almeida Uchiha\\.nuget\\packages\\serilog.sinks.file\\4.1.0\\serilog.sinks.file.4.1.0.nupkg.sha512",
     "C:\\Users\\Almeida Uchiha\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
-    "C:\\Users\\Almeida Uchiha\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\Almeida Uchiha\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.0.5\\swashbuckle.aspnetcore.swagger.6.0.5.nupkg.sha512",
     "C:\\Users\\Almeida Uchiha\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
     "C:\\Users\\Almeida Uchiha\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
     "C:\\Users\\Almeida Uchiha\\.nuget\\packages\\system.appcontext\\4.1.0\\system.appcontext.4.1.0.nupkg.sha512",

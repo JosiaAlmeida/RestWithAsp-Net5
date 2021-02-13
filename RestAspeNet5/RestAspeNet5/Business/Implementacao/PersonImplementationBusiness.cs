@@ -15,23 +15,23 @@ namespace RestAspeNet5.Business.Implementacao
             _repository = repository;
             _converter = new IPersonConverter();
         }
-        public List<IPersonVO> FindAll()
+        public List<PersonVO> FindAll()
         {
             return _converter.Parse(_repository.FindAll());
         }
 
-        public IPersonVO FindByID(long ID)
+        public PersonVO FindByID(long ID)
         {
             return _converter.Parse(_repository.FindByID(ID));
         }
 
-        public IPersonVO Create(IPersonVO person)
+        public PersonVO Create(PersonVO person)
         {
             var personEntity = _converter.Parse(person);
             personEntity = _repository.Create(personEntity);
             return _converter.Parse(personEntity);
         }
-        public IPersonVO Update(IPersonVO person)
+        public PersonVO Update(PersonVO person)
         {
             var personEntity = _converter.Parse(person);
             personEntity= _repository.Update(personEntity);

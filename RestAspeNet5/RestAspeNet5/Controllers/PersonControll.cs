@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using RestAspeNet5.Business;
 using RestAspeNet5.Business.Implementacao;
 using RestAspeNet5.Data.VO;
+using RestAspeNet5.Hypermedia.Filters;
 
 namespace RestAspeNet5.Controllers
 {
@@ -26,11 +27,13 @@ namespace RestAspeNet5.Controllers
         }
 
         [HttpGet]
+        [TypeFilter(typeof(HyperMidiaFilter))]
         public IActionResult get()
         {
             return Ok(_personBusiness.FindAll());
         }
         [HttpGet("{id}")]
+        [TypeFilter(typeof(HyperMidiaFilter))]
         public IActionResult Get(long id)
         {
             var person = _personBusiness.FindByID(id);
@@ -38,14 +41,16 @@ namespace RestAspeNet5.Controllers
             return Ok(person);
         }
         [HttpPost]
-        public IActionResult Post([FromBody] IPersonVO person)
+        [TypeFilter(typeof(HyperMidiaFilter))]
+        public IActionResult Post([FromBody] PersonVO person)
         {
             if (person == null) return BadRequest();
             return Ok(_personBusiness.Create(person));
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] IPersonVO person)
+        [TypeFilter(typeof(HyperMidiaFilter))]
+        public IActionResult Put([FromBody] PersonVO person)
         {
             if (person == null) return BadRequest();
             return Ok(_personBusiness.Update(person));

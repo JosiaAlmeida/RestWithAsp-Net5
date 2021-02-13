@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Net.Http.Headers;
 using RestAspeNet5.Business;
 using RestAspeNet5.Business.Implementacao;
+using RestAspeNet5.Hypermedia.Enricher;
+using RestAspeNet5.Hypermedia.Filters;
 using RestAspeNet5.Modals.Context;
 using RestAspeNet5.Repository.Generic;
 using Serilog;
@@ -50,6 +52,12 @@ namespace RestAspeNet5
                 opt.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("application/xml"));
                 opt.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
             }).AddXmlSerializerFormatters();
+
+            var filteroptions = new HyperMidiaFilterOptions();
+            filteroptions.ContentResponsiveEnricherList.Add(new PersonEnricher());
+            filteroptions.ContentResponsiveEnricherList.Add(new BookEnricher());
+
+            services.AddSingleton(filteroptions);
             //Injeção de dependencias
             
             services.AddApiVersioning();
@@ -79,6 +87,7 @@ namespace RestAspeNet5
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute("Defaultapi", ("{controller=value}/{id?}"));
             });
         }
         private void MigrateDatabase(string connection)

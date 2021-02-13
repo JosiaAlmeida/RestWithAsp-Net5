@@ -1,16 +1,16 @@
 ﻿using RestAspeNet5.Hypermedia;
 using RestAspeNet5.Hypermedia.Abstrat;
-using RestAspeNet5.Hypermedia.Filters;
 using System.Collections.Generic;
 
 namespace RestAspeNet5.Data.VO
 {
-    public class BookVO: ISuporteHypermedia
+    public class PersonVO: ISuporteHypermedia
     {
         public long ID { get; set; }
-        public string Title { get; set; }
-        public string Descricao { get; set; }
-        public string Autor { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Gender { get; set; }
+        public string Adress { get; set; }
         public List<HyperMidiaLinks> Links { get; set; } = new List<HyperMidiaLinks>();
     }
 }

@@ -4,6 +4,6 @@ namespace RestAspeNet5.Hypermedia.Abstrat
 {
     public interface ISuporteHypermedia
     {
-        List<HyperMidiaLink> Links { get; set; }
+        List<HyperMidiaLinks> Links { get; set; }
     }
 }

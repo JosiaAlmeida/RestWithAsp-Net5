@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using RestAspeNet5.Business;
 using RestAspeNet5.Data.VO;
+using RestAspeNet5.Hypermedia.Filters;
 using RestAspeNet5.Modals;
 using RestAspeNet5.Repository.Generic;
 
@@ -27,11 +28,13 @@ namespace RestAspeNet5.Controllers
         }
 
         [HttpGet]
+        [TypeFilter(typeof(HyperMidiaFilter))]
         public IActionResult get()
         {
             return Ok(_booksBusiness.FindAll());
         }
         [HttpGet("{id}")]
+        [TypeFilter(typeof(HyperMidiaFilter))]
         public IActionResult Get(long id)
         {
             var book = _booksBusiness.FindByID(id);
@@ -39,6 +42,7 @@ namespace RestAspeNet5.Controllers
             return Ok(book);
         }
         [HttpPost]
+        [TypeFilter(typeof(HyperMidiaFilter))]
         public IActionResult Post([FromBody] BookVO books)
         {
             if (books == null) return BadRequest();
@@ -46,6 +50,7 @@ namespace RestAspeNet5.Controllers
         }
 
         [HttpPut]
+        [TypeFilter(typeof(HyperMidiaFilter))]
         public IActionResult Put([FromBody] BookVO books)
         {
             if (books == null) return BadRequest();

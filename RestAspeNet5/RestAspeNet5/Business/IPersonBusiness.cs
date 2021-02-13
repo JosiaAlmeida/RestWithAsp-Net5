@@ -5,10 +5,10 @@ namespace RestAspeNet5.Business
 {
     public interface IPersonBusiness
     {
-        IPersonVO Create(IPersonVO person);
-        List<IPersonVO> FindAll();
-        IPersonVO FindByID(long ID);
-        IPersonVO Update(IPersonVO person);
+        PersonVO Create(PersonVO person);
+        List<PersonVO> FindAll();
+        PersonVO FindByID(long ID);
+        PersonVO Update(PersonVO person);
         //Person Delete(Person person);
         void Delete(long id);
     }
