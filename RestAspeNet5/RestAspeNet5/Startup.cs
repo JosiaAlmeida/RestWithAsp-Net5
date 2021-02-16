@@ -35,7 +35,11 @@ namespace RestAspeNet5
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            //Cors
+            services.AddCors(opt=> opt.AddDefaultPolicy(builder=> {
+                builder.AllowAnyOrigin()
+                .AllowAnyMethod().AllowAnyHeader();
+            }));
             services.AddControllers();
             //Injetando Mysql Conexão
             var connection = Configuration["MySQLConnection:MySQLConnectionString"];
@@ -97,6 +101,9 @@ namespace RestAspeNet5
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            //Habilitando cors
+            //Depois de Https e routing, e antes de endpoints
+            app.UseCors();
 
             app.UseSwagger();
             //Gera uma pagina Html

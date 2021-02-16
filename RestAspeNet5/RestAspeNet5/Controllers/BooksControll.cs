@@ -5,6 +5,7 @@ using RestAspeNet5.Data.VO;
 using RestAspeNet5.Hypermedia.Filters;
 using RestAspeNet5.Modals;
 using RestAspeNet5.Repository.Generic;
+using System.Collections.Generic;
 
 namespace RestAspeNet5.Controllers
 {
@@ -28,12 +29,20 @@ namespace RestAspeNet5.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType((200), Type = typeof(List<BookVO>))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         [TypeFilter(typeof(HyperMidiaFilter))]
         public IActionResult get()
         {
             return Ok(_booksBusiness.FindAll());
         }
         [HttpGet("{id}")]
+        [ProducesResponseType((200), Type = typeof(List<BookVO>))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         [TypeFilter(typeof(HyperMidiaFilter))]
         public IActionResult Get(long id)
         {
@@ -42,6 +51,10 @@ namespace RestAspeNet5.Controllers
             return Ok(book);
         }
         [HttpPost]
+        [ProducesResponseType((200), Type = typeof(List<BookVO>))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         [TypeFilter(typeof(HyperMidiaFilter))]
         public IActionResult Post([FromBody] BookVO books)
         {
@@ -50,6 +63,10 @@ namespace RestAspeNet5.Controllers
         }
 
         [HttpPut]
+        [ProducesResponseType((200), Type = typeof(List<BookVO>))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         [TypeFilter(typeof(HyperMidiaFilter))]
         public IActionResult Put([FromBody] BookVO books)
         {
@@ -58,6 +75,10 @@ namespace RestAspeNet5.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType((200), Type = typeof(List<BookVO>))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
         public IActionResult Delete(long id)
         {
             _booksBusiness.Delete(id);
