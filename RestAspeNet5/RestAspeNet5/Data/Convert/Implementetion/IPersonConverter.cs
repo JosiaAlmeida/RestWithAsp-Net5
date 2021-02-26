@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace RestAspeNet5.Data.Convert.Implementetion
 {
-    public class IPersonConverter : IParser<IPersonVO, Person>, IParser<Person, IPersonVO>
+    public class IPersonConverter : IParser<PersonVO, Person>, IParser<Person, PersonVO>
     {
-        public Person Parse(IPersonVO origin)
+        public Person Parse(PersonVO origin)
         {
             if (origin == null) return null;
             return new Person
@@ -17,29 +17,31 @@ namespace RestAspeNet5.Data.Convert.Implementetion
                 FirstName = origin.FirstName,
                 LastName = origin.LastName,
                 Adress = origin.Adress,
-                Gender = origin.Gender
+                Gender = origin.Gender,
+                Enable= origin.Enable
             };
         }
-        public IPersonVO Parse(Person origin)
+        public PersonVO Parse(Person origin)
         {
             if (origin == null) return null;
-            return new IPersonVO
+            return new PersonVO
             {
                 ID = origin.ID,
                 FirstName = origin.FirstName,
                 LastName = origin.LastName,
                 Adress = origin.Adress,
-                Gender = origin.Gender
+                Gender = origin.Gender,
+                Enable = origin.Enable
             };
         }
 
-        public List<Person> Parse(List<IPersonVO> origin)
+        public List<Person> Parse(List<PersonVO> origin)
         {
             if (origin == null) return null;
             return origin.Select(item => Parse(item)).ToList();
         }
 
-        public List<IPersonVO> Parse(List<Person> origin)
+        public List<PersonVO> Parse(List<Person> origin)
         {
             if (origin == null) return null;
             return origin.Select(item => Parse(item)).ToList();

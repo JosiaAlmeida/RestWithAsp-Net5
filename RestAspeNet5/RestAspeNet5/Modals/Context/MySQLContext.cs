@@ -15,5 +15,6 @@ namespace RestAspeNet5.Modals.Context
         public MySQLContext(DbContextOptions<MySQLContext>options) : base(options) {}
         public DbSet<Person> Persons { get; set; }
         public DbSet<Books> books { get; set; }
+        public DbSet<Users> users { get; set; }
     }
 }

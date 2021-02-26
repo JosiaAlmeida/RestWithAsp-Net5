@@ -10,7 +10,7 @@ namespace RestAspeNet5.Repository.Generic
 {
     public class GenericRepository<T> : IRepository<T> where T : BaseEntity
     {
-        private MySQLContext _context;
+        protected MySQLContext _context;
         private DbSet<T> dataset;
         public GenericRepository(MySQLContext context)
         {
@@ -28,34 +28,17 @@ namespace RestAspeNet5.Repository.Generic
         public T Create(T item)
         {
             //Trocando id de ids iguais
-            if (item.ID == item.ID){
-                dataset.SingleOrDefault(pers => pers.ID.Equals(item.ID + 1));
-                try
-                {
-                    dataset.Add(item);
-                    _context.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-                return item;
-            }
-            else
+            try
             {
-                try
-                {
-                    dataset.Add(item);
-                    _context.SaveChanges();
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
-                return item;
+                dataset.Add(item);
+                _context.SaveChanges();
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return item;
             
         }
         public T Update(T item)
@@ -95,22 +78,30 @@ namespace RestAspeNet5.Repository.Generic
                     throw;
                 }
             }
-            if (result == result)
-            {
-                try
-                {
-                    dataset.Remove(result);
-                    _context.SaveChanges();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
         }
         private bool Exist(long iD)
         {
             return dataset.Any(pers => pers.ID.Equals(iD));
+        }
+        //Retorna Pagina
+        public List<T> FindWithPageSearch(string query)
+        {
+            return dataset.FromSqlRaw<T>(query).ToList();
+        }
+        //Retorna Total
+        public int GetCoutn(string query)
+        {
+            var result = "";
+            using (var connection = _context.Database.GetDbConnection())
+            {
+                connection.Open();
+                using(var comand= connection.CreateCommand())
+                {
+                    comand.CommandText = query;
+                    result = comand.ExecuteScalar().ToString();
+                }
+            }
+            return int.Parse(result);
         }
     }
 }

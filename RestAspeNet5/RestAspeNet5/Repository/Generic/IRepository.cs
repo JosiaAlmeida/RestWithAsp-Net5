@@ -15,5 +15,7 @@ namespace RestAspeNet5.Repository.Generic
         T Update(T item);
         //T Delete(T item);
         void Delete(long id);
+        List<T> FindWithPageSearch(string query);
+        int GetCoutn(string query);
     }
 }
