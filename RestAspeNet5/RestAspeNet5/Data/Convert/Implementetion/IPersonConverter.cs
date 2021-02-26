@@ -17,7 +17,8 @@ namespace RestAspeNet5.Data.Convert.Implementetion
                 FirstName = origin.FirstName,
                 LastName = origin.LastName,
                 Adress = origin.Adress,
-                Gender = origin.Gender
+                Gender = origin.Gender,
+                Enable= origin.Enable
             };
         }
         public PersonVO Parse(Person origin)
@@ -29,7 +30,8 @@ namespace RestAspeNet5.Data.Convert.Implementetion
                 FirstName = origin.FirstName,
                 LastName = origin.LastName,
                 Adress = origin.Adress,
-                Gender = origin.Gender
+                Gender = origin.Gender,
+                Enable = origin.Enable
             };
         }
 

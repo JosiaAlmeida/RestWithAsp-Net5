@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace RestAspeNet5.Repository
 {
-    interface IUsersRepository
+    public interface IUsersRepository
     {
         Users ValidateCredentials(UserVO user);
+        Users ValidateCredentials(string userName);
+        bool RevokeToken(string userName);
+        Users RefreshUserInfo(Users user);
     }
 }

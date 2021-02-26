@@ -11,6 +11,7 @@ namespace RestAspeNet5.Data.VO
         public string Title { get; set; }
         public string Descricao { get; set; }
         public string Autor { get; set; }
+        public bool Enable { get; set; }
         public List<HyperMidiaLinks> Links { get; set; } = new List<HyperMidiaLinks>();
     }
 }

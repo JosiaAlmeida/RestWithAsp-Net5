@@ -16,6 +16,8 @@ namespace RestAspeNet5.Modals
         public string Descricao { get; set; }
         [Column("autor")]
         public string Autor { get; set; }
+        [Column("enable")]
+        public bool Enable { get; set; }
 
 
     }

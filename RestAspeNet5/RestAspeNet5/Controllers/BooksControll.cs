@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RestAspeNet5.Business;
 using RestAspeNet5.Data.VO;
@@ -10,6 +11,7 @@ using System.Collections.Generic;
 namespace RestAspeNet5.Controllers
 {
     [ApiVersion("1")]
+    [Authorize("Bearer")]
     [ApiController]
     [Route("api/[controller]/v{version:apiVersion}")]
     public class BooksControll: ControllerBase
@@ -28,15 +30,15 @@ namespace RestAspeNet5.Controllers
             _booksBusiness = books;
         }
 
-        [HttpGet]
+        [HttpGet("{SortDirection}/{PageSize}/{Size}")]
         [ProducesResponseType((200), Type = typeof(List<BookVO>))]
         [ProducesResponseType((204))]
         [ProducesResponseType((400))]
         [ProducesResponseType((401))]
         [TypeFilter(typeof(HyperMidiaFilter))]
-        public IActionResult get()
+        public IActionResult get(string name, string SortDirection, int PageSize, int Size)
         {
-            return Ok(_booksBusiness.FindAll());
+            return Ok(_booksBusiness.FindWithPageSearch(name, SortDirection, PageSize, Size));
         }
         [HttpGet("{id}")]
         [ProducesResponseType((200), Type = typeof(List<BookVO>))]
@@ -72,6 +74,19 @@ namespace RestAspeNet5.Controllers
         {
             if (books == null) return BadRequest();
             return Ok(_booksBusiness.Update(books));
+        }
+
+        [HttpPatch("{id}")]
+        [ProducesResponseType((200), Type = typeof(List<BookVO>))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
+        [TypeFilter(typeof(HyperMidiaFilter))]
+        public IActionResult patch(long id)
+        {
+             var bookEntity = _booksBusiness.Disable(id);
+            if (bookEntity == null) return BadRequest("Id invalid");
+            return Ok(bookEntity);
         }
 
         [HttpDelete("{id}")]

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RestAspeNet5.Business;
 using RestAspeNet5.Business.Implementacao;
@@ -10,6 +11,7 @@ namespace RestAspeNet5.Controllers
 {
     [ApiVersion("1")]
     [ApiController]
+    [Authorize("Bearer")]
     [Route("api/[controller]/v{version:apiVersion}")]
     public class PersonControll : ControllerBase
     {
@@ -26,16 +28,29 @@ namespace RestAspeNet5.Controllers
             _logger = logger;
             _personBusiness = personBusiness;
         }
-
-        [HttpGet]
+        /*
+                [HttpGet]
+                [ProducesResponseType((200), Type = typeof(List<PersonVO>))]
+                [ProducesResponseType((204))]
+                [ProducesResponseType((400))]
+                [ProducesResponseType((401))]
+                [TypeFilter(typeof(HyperMidiaFilter))]
+                public IActionResult get()
+                {
+                    return Ok(_personBusiness.FindAll());
+                }*/
+        [HttpGet("{SortDirection}/{PageSize}/{Size}")]
         [ProducesResponseType((200), Type = typeof(List<PersonVO>))]
         [ProducesResponseType((204))]
         [ProducesResponseType((400))]
         [ProducesResponseType((401))]
         [TypeFilter(typeof(HyperMidiaFilter))]
-        public IActionResult get()
+        public IActionResult get([FromQuery] string name, 
+            string SortDirection, int PageSize,
+            int Size)
         {
-            return Ok(_personBusiness.FindAll());
+            return Ok(_personBusiness.FindWithPageSearch(name, SortDirection,
+                PageSize, Size));
         }
         [HttpGet("{id}")]
         [ProducesResponseType((200), Type= typeof(List<PersonVO>))]
@@ -46,6 +61,18 @@ namespace RestAspeNet5.Controllers
         public IActionResult Get(long id)
         {
             var person = _personBusiness.FindByID(id);
+            if (person == null) return NotFound();
+            return Ok(person);
+        }
+        [HttpGet("FindPersonByName")]
+        [ProducesResponseType((200), Type = typeof(List<PersonVO>))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
+        [TypeFilter(typeof(HyperMidiaFilter))]
+        public IActionResult FindByName(string firstName, string secondName)
+        {
+            var person = _personBusiness.FindByName(firstName, secondName);
             if (person == null) return NotFound();
             return Ok(person);
         }
@@ -71,6 +98,18 @@ namespace RestAspeNet5.Controllers
         {
             if (person == null) return BadRequest();
             return Ok(_personBusiness.Update(person));
+        }
+
+        [HttpPatch("{id}")]
+        [ProducesResponseType((200), Type = typeof(List<PersonVO>))]
+        [ProducesResponseType((204))]
+        [ProducesResponseType((400))]
+        [ProducesResponseType((401))]
+        [TypeFilter(typeof(HyperMidiaFilter))]
+        public IActionResult Patch(long id)
+        {
+            var personEntity = _personBusiness.Disabled(id);
+            return Ok(personEntity);
         }
 
         [HttpDelete("{id}")]

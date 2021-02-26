@@ -10,7 +10,7 @@ namespace RestAspeNet5.Repository.Generic
 {
     public class GenericRepository<T> : IRepository<T> where T : BaseEntity
     {
-        private MySQLContext _context;
+        protected MySQLContext _context;
         private DbSet<T> dataset;
         public GenericRepository(MySQLContext context)
         {
@@ -82,6 +82,26 @@ namespace RestAspeNet5.Repository.Generic
         private bool Exist(long iD)
         {
             return dataset.Any(pers => pers.ID.Equals(iD));
+        }
+        //Retorna Pagina
+        public List<T> FindWithPageSearch(string query)
+        {
+            return dataset.FromSqlRaw<T>(query).ToList();
+        }
+        //Retorna Total
+        public int GetCoutn(string query)
+        {
+            var result = "";
+            using (var connection = _context.Database.GetDbConnection())
+            {
+                connection.Open();
+                using(var comand= connection.CreateCommand())
+                {
+                    comand.CommandText = query;
+                    result = comand.ExecuteScalar().ToString();
+                }
+            }
+            return int.Parse(result);
         }
     }
 }

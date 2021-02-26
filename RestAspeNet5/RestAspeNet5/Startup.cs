@@ -14,8 +14,19 @@ using RestAspeNet5.Business.Implementacao;
 using RestAspeNet5.Hypermedia.Enricher;
 using RestAspeNet5.Hypermedia.Filters;
 using RestAspeNet5.Modals.Context;
+using RestAspeNet5.Repository;
 using RestAspeNet5.Repository.Generic;
+using RestAspeNet5.Service;
+using RestAspeNet5.Configuration;
+using RestAspeNet5.Service.Implementations;
 using Serilog;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace RestAspeNet5
 {
@@ -35,8 +46,38 @@ namespace RestAspeNet5
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var TokenConfiguration = new TokenConfiguration();
+
+            new ConfigureFromConfigurationOptions<TokenConfiguration>(
+                Configuration.GetSection("TokenConfigurations")
+                ).Configure(TokenConfiguration);
+
+            services.AddSingleton(TokenConfiguration);
+            _ = services.AddAuthentication(opt =>
+              {
+                  opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                  opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+              }).AddJwtBearer(Options =>
+              {
+                  Options.TokenValidationParameters = new TokenValidationParameters
+                  {
+                      ValidateIssuer = true,
+                      ValidateAudience = true,
+                      ValidateLifetime = true,
+                      ValidateIssuerSigningKey = true,
+                      ValidIssuer = TokenConfiguration.Issuer,
+                      ValidAudience = TokenConfiguration.Audience,
+                      IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(TokenConfiguration.Secret))
+                  };
+              });
+            services.AddAuthorization(auth =>
+            {
+                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder().AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                    .RequireAuthenticatedUser().Build()
+                    );
+            });
             //Cors
-            services.AddCors(opt=> opt.AddDefaultPolicy(builder=> {
+            services.AddCors(opt=> opt.AddDefaultPolicy(builder=> { 
                 builder.AllowAnyOrigin()
                 .AllowAnyMethod().AllowAnyHeader();
             }));
@@ -79,12 +120,21 @@ namespace RestAspeNet5
                 });
             });
             //Injeção de dependencias
-            
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddApiVersioning();
             //Injetando Services
             //Injetando nossa classe de negocio
             services.AddScoped<IPersonBusiness, PersonImplementationBusiness>();
             services.AddScoped<IBooksBusiness, BookImplementationBusiness>();
+            services.AddScoped<ILoginBusiness, LoginBusinessImplementation>();
+            services.AddScoped<IFileBusiness, FileBusinessImplementation>();
+
+            services.AddTransient<ITokenService, TokenServices>();
+
+            services.AddScoped<IUsersRepository,UsersRepository>();
+            services.AddScoped<IPersonRepository, PersonRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
 

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Routing;
 using RestAspeNet5.Hypermedia.Abstrat;
+using RestAspeNet5.Hypermedia.Filters;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -42,6 +43,13 @@ namespace RestAspeNet5.Hypermedia
                 {
                     ConcurrentBag<T> Bag = new ConcurrentBag<T>(Collection);
                     Parallel.ForEach(Bag, (element) =>
+                    {
+                        EnrichModel(element, urlHelper);
+                    });
+                }
+                else if (okObjectResult.Value is PageSearchVO<T> pageSearchVO)
+                {
+                    Parallel.ForEach(pageSearchVO.List.ToList(), (element) =>
                     {
                         EnrichModel(element, urlHelper);
                     });

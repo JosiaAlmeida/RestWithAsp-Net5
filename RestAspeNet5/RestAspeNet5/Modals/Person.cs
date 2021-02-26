@@ -20,6 +20,8 @@ namespace RestAspeNet5.Modals
         public string Gender { get; set; }
         [Column("address")]
         public string Adress { get; set; }
+        [Column("enable")]
+        public bool Enable { get; set; }
 
 
     }

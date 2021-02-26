@@ -1,2 +1,2 @@
-INSERT INTO `person` (`id`, `firstname`, `lastname`, `address`, `gender`) VALUES
-	(0, 'Josia', 'Almeida', 'Lunda-Multperfil', 'Masculino');
+INSERT INTO `person` (`id`, `firstname`, `lastname`, `gender`, `address`) VALUES
+	(1, 'Josia', 'Almeida', 'Macho', 'COAPV OASK');
