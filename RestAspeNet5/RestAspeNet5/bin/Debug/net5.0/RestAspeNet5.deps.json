@@ -30,6 +30,7 @@
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
           "Microsoft.AspNetCore.Mvc.Formatters.Xml": "2.2.0",
           "Microsoft.AspNetCore.Mvc.Versioning": "4.2.0",
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.10.9",
           "Pomelo.EntityFrameworkCore.MySql": "3.2.4",
           "Serilog": "2.10.0",
           "Serilog.AspNetCore": "3.4.0",
@@ -759,6 +760,7 @@
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
         }
       },
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.10.9": {},
       "MySqlConnector/0.69.9": {
         "runtime": {
           "lib/netcoreapp3.0/MySqlConnector.dll": {
@@ -3373,6 +3375,13 @@
       "sha512": "sha512-Nug3rO+7Kl5/SBAadzSMAVgqDlfGjJZ0GenQrLywJ84XGKO0uRqkunz5Wyl0SDwcR71bAATXvSdbdzPrYRYKGw==",
       "path": "microsoft.openapi/1.2.3",
       "hashPath": "microsoft.openapi.1.2.3.nupkg.sha512"
+    },
+    "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.10.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Sug+YeP9YYigFnUdvPCUJjBz7cc2VVR7UBZkIRwPWmVR/HmIM5HbcpX940s4BM3xgL3QHGp3qN7AqkcZ/MjZEw==",
+      "path": "microsoft.visualstudio.azure.containers.tools.targets/1.10.9",
+      "hashPath": "microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512"
     },
     "MySqlConnector/0.69.9": {
       "type": "package",
